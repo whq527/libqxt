@@ -1,3 +1,11 @@
+解压源码，不包含中文路径，尽量在顶层目录。
+修改configre.bat 将qmake的路径添加到环境变量, 根据32位64位修改
+在开始菜单里运行”VS2015开发人员命令提示“出configre.bat -msvc
+然后运行命令：configure -msvc
+在“qxtmailattachment.h"添加头文件: #include<QIODevice>
+将项目中的所有“QT_STATIC_CONST_IMPL”换成“const"
+将项目中的所有“QT_STATIC_CONST”换成“static const"
+
 1) configure
 
 	make sure qmake is in your PATH and run ./configure  or configure.bat on windows.

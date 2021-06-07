@@ -1,5 +1,9 @@
 @ECHO off
 
+set QTDIR=D:\work\Libs\Qt\5.15.2\msvc2019
+set QTCREATORDIR=D:\work\Libs\Qt\Tools\QtCreator
+set PATH=%QTDIR%\bin;%QTCREATORDIR%\bin;%PATH%
+
 @rem -- defaults
 set QMAKE_BIN=qmake
 set MAKE_BIN=

@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2009 Nokia Corporation and/or its subsidiary(-ies).
 ** Contact: Qt Software Information (qt-info@nokia.com)
@@ -56,66 +56,66 @@ QT_BEGIN_NAMESPACE
 
 class Config
 {
- public:
-    Config(const QString& programName);
-    ~Config();
+public:
+	Config(const QString& programName);
+	~Config();
 
-    void load(const QString& fileName);
-    void setStringList(const QString& var, const QStringList& values);
+	void load(const QString& fileName);
+	void setStringList(const QString& var, const QStringList& values);
 
-    const QString& programName() const { return prog; }
-    const Location& location() const { return loc; }
-    const Location& lastLocation() const { return lastLoc; }
-    bool getBool(const QString& var) const;
-    int getInt(const QString& var) const;
-    QString getString(const QString& var) const;
-    QSet<QString> getStringSet(const QString& var) const;
-    QStringList getStringList(const QString& var) const;
-    QRegExp getRegExp(const QString& var) const;
-    QList<QRegExp> getRegExpList(const QString& var) const;
-    QSet<QString> subVars(const QString& var) const;
-    QStringList getAllFiles(const QString& filesVar, 
-                            const QString& dirsVar,
-                            const QString& defaultNameFilter,
-                            const QSet<QString> &excludedDirs = QSet<QString>());
+	const QString& programName() const { return prog; }
+	const Location& location() const { return loc; }
+	const Location& lastLocation() const { return lastLoc; }
+	bool getBool(const QString& var) const;
+	int getInt(const QString& var) const;
+	QString getString(const QString& var) const;
+	QSet<QString> getStringSet(const QString& var) const;
+	QStringList getStringList(const QString& var) const;
+	QRegExp getRegExp(const QString& var) const;
+	QList<QRegExp> getRegExpList(const QString& var) const;
+	QSet<QString> subVars(const QString& var) const;
+	QStringList getAllFiles(const QString& filesVar,
+		const QString& dirsVar,
+		const QString& defaultNameFilter,
+		const QSet<QString>& excludedDirs = QSet<QString>());
 
-    static QStringList getFilesHere(const QString& dir,
-                                    const QString& nameFilter,
-                                    const QSet<QString> &excludedDirs = QSet<QString>());
-    static QString findFile(const Location& location, 
-                            const QStringList &files,
-                            const QStringList& dirs, 
-                            const QString& fileName,
-                            QString& userFriendlyFilePath);
-    static QString findFile(const Location &location, 
-                            const QStringList &files,
-                            const QStringList &dirs, 
-                            const QString &fileBase,
-                            const QStringList &fileExtensions,
-                            QString &userFriendlyFilePath);
-    static QString copyFile(const Location& location,
-                            const QString& sourceFilePath,
-                            const QString& userFriendlySourceFilePath,
-                            const QString& targetDirPath);
-    static int numParams(const QString& value);
-    static bool removeDirContents(const QString& dir);
+	static QStringList getFilesHere(const QString& dir,
+		const QString& nameFilter,
+		const QSet<QString>& excludedDirs = QSet<QString>());
+	static QString findFile(const Location& location,
+		const QStringList& files,
+		const QStringList& dirs,
+		const QString& fileName,
+		QString& userFriendlyFilePath);
+	static QString findFile(const Location& location,
+		const QStringList& files,
+		const QStringList& dirs,
+		const QString& fileBase,
+		const QStringList& fileExtensions,
+		QString& userFriendlyFilePath);
+	static QString copyFile(const Location& location,
+		const QString& sourceFilePath,
+		const QString& userFriendlySourceFilePath,
+		const QString& targetDirPath);
+	static int numParams(const QString& value);
+	static bool removeDirContents(const QString& dir);
 
-    QT_STATIC_CONST QString dot;
+	static const QString dot;
 
- private:
-    static bool isMetaKeyChar(QChar ch);
-    void load(Location location, const QString& fileName);
+private:
+	static bool isMetaKeyChar(QChar ch);
+	void load(Location location, const QString& fileName);
 
-    QString prog;
-    Location loc;
-    Location lastLoc;
-    QMap<QString, Location> locMap;
-    QMap<QString, QStringList> stringListValueMap;
-    QMap<QString, QString> stringValueMap;
+	QString prog;
+	Location loc;
+	Location lastLoc;
+	QMap<QString, Location> locMap;
+	QMap<QString, QStringList> stringListValueMap;
+	QMap<QString, QString> stringValueMap;
 
-    static QMap<QString, QString> uncompressedFiles;
-    static QMap<QString, QString> extractedDirs;
-    static int numInstances;
+	static QMap<QString, QString> uncompressedFiles;
+	static QMap<QString, QString> extractedDirs;
+	static int numInstances;
 };
 
 #define CONFIG_ALIAS                    "alias"

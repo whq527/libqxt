@@ -1,4 +1,4 @@
-#ifndef QXTMAILATTACHMENT_H
+﻿#ifndef QXTMAILATTACHMENT_H
 /****************************************************************************
 ** Copyright (c) 2006 - 2011, the LibQxt project.
 ** See the Qxt AUTHORS file for a list of authors and copyright holders.
@@ -32,7 +32,7 @@
 #define QXTMAILATTACHMENT_H
 
 #include "qxtglobal.h"
-
+#include <QIODevice>
 #include <QStringList>
 #include <QHash>
 #include <QByteArray>
@@ -43,37 +43,37 @@ class QxtMailAttachmentPrivate;
 class QXT_NETWORK_EXPORT QxtMailAttachment
 {
 public:
-    QxtMailAttachment();
-    QxtMailAttachment(const QxtMailAttachment& other);
-    QxtMailAttachment(const QByteArray& content, const QString& contentType = QString("application/octet-stream"));
-    QxtMailAttachment(QIODevice* content, const QString& contentType = QString("application/octet-stream"));
-    QxtMailAttachment& operator=(const QxtMailAttachment& other);
-    ~QxtMailAttachment();
-    static QxtMailAttachment fromFile(const QString& filename);
+	QxtMailAttachment();
+	QxtMailAttachment(const QxtMailAttachment& other);
+	QxtMailAttachment(const QByteArray& content, const QString& contentType = QString("application/octet-stream"));
+	QxtMailAttachment(QIODevice* content, const QString& contentType = QString("application/octet-stream"));
+	QxtMailAttachment& operator=(const QxtMailAttachment& other);
+	~QxtMailAttachment();
+	static QxtMailAttachment fromFile(const QString& filename);
 
-    QIODevice* content() const;
-    void setContent(const QByteArray& content);
-    void setContent(QIODevice* content);
+	QIODevice* content() const;
+	void setContent(const QByteArray& content);
+	void setContent(QIODevice* content);
 
-    bool deleteContent() const;
-    void setDeleteContent(bool enable);
+	bool deleteContent() const;
+	void setDeleteContent(bool enable);
 
-    QString contentType() const;
-    void setContentType(const QString& contentType);
+	QString contentType() const;
+	void setContentType(const QString& contentType);
 
-    QHash<QString, QString> extraHeaders() const;
-    QString extraHeader(const QString&) const;
-    bool hasExtraHeader(const QString&) const;
-    void setExtraHeader(const QString& key, const QString& value);
-    void setExtraHeaders(const QHash<QString, QString>&);
-    void removeExtraHeader(const QString& key);
+	QHash<QString, QString> extraHeaders() const;
+	QString extraHeader(const QString&) const;
+	bool hasExtraHeader(const QString&) const;
+	void setExtraHeader(const QString& key, const QString& value);
+	void setExtraHeaders(const QHash<QString, QString>&);
+	void removeExtraHeader(const QString& key);
 
-    QByteArray mimeData();
-    const QByteArray& rawData() const;
-    bool isText() const;
+	QByteArray mimeData();
+	const QByteArray& rawData() const;
+	bool isText() const;
 
 private:
-    QSharedDataPointer<QxtMailAttachmentPrivate> qxt_d;
+	QSharedDataPointer<QxtMailAttachmentPrivate> qxt_d;
 };
 Q_DECLARE_TYPEINFO(QxtMailAttachment, Q_MOVABLE_TYPE);
 
